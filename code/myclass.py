@@ -205,7 +205,7 @@ class RGBT():
         return hsv[0, 0, 0]
     
     def save(self):
-        self._save_rgbT_csv
+        self._save_rgbT_csv()
         return self.output_temperature_series, self.output_hue_series
     
 

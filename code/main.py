@@ -38,6 +38,8 @@ def traverse():
         rgbt.hue_time_plot()
         rgbt.hue_to_temperature()
         
+        rgbt.save()
+        
 
 if __name__ == '__main__':
-    main()
+    traverse()
