@@ -151,9 +151,9 @@ class RGBT():
         plt.savefig(f'{self.plots_output_dir}{self.file_name}_temperature_mapping.png')
         plt.clf()
       
-    def save_rgbT_csv(self):
+    def _save_rgbT_csv(self):
         output = []
-        for bgr, T in zip(self.time_series, self.temperature_vs_time):
+        for bgr, T in zip(self.time_series, self.output_temperature_series):
             output.append([bgr[2], bgr[1], bgr[0], T])
         output_df = pd.DataFrame(output, columns=['R', 'G', 'B', 'T'])
         output_df.to_csv(f'{self.data_output_dir}{self.file_name}.csv')
@@ -203,6 +203,10 @@ class RGBT():
         elif self.RBG_or_BGR == 'RGB':
             hsv = cv2.cvtColor(bgr, cv2.COLOR_RGB2HSV)
         return hsv[0, 0, 0]
+    
+    def save(self):
+        self._save_rgbT_csv
+        return self.output_temperature_series, self.output_hue_series
     
 
 
